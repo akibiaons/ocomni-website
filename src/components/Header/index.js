@@ -27,7 +27,7 @@ const Logo = styled.a`
   height: auto;
   cursor: pointer;
   padding-top: 0.5rem;
-  color: #5b45bb;
+  color: #803bec;
 `;
 
 const Nav = styled.nav`

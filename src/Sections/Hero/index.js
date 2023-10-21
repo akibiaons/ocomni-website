@@ -138,11 +138,14 @@ const Title = styled.h1`
   font-size: calc(2rem + 1vw);
   line-height: 1.2;
   padding: 0.5rem 0;
+  span {
+    color: #803bec;
+  }
 `;
 
 const SubText = styled.h5`
   font-size: calc(0.5rem + 0.5vw);
-  color: var(--nav2);
+  color: darkgray;
 `;
 
 const CTA = styled.button`
@@ -191,11 +194,14 @@ const HeroSection = () => {
         <Lb id="leftBlock">
           <Topic>
             <Circle />
-            <span>We Build Web</span>
+            <span>We automate data</span>
           </Topic>
-          <Title>Transforming your digital presence</Title>
+          <Title>
+            Save time & money with <span>OCOMNI</span> data automation
+          </Title>
           <SubText>
-            we help fast growing companies build award winning websites
+            We create integrated applications to streamline data automation for
+            advisory service consultants
           </SubText>
           <CTA>
             Get in touch &nbsp;
