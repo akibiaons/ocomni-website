@@ -138,17 +138,20 @@ const About = () => {
               <img src={human} alt="" width="400" height="400" />
             </Human>
 
-            <Text>
-              We help our customers to tell about themselves, to grow and stand
-              out in an increasingly competitive digital world, through creative
-              projects that are able to attract and involve, creating strategic
-              value.
+            <Text style={{ marginBottom: 14, marginTop: 20 }}>
+              Gone are the days of inputting excel data by hand into your
+              advisory platform, or spending time and money hiring data entry
+              workers.
             </Text>
-            <div>
+            <Text>
+              We create integrated applications to streamline data automation
+              for advisory service consultants.
+            </Text>
+            {/* <div>
               <Circle style={{ backgroundColor: "var(--purple)" }} />
               <Circle style={{ backgroundColor: "var(--pink)" }} />
               <Circle style={{ backgroundColor: "var(--black)" }} />
-            </div>
+            </div> */}
           </AboutText>
         </Content>
       </Main>
