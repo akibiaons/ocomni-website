@@ -5,7 +5,9 @@ import styled, { keyframes } from "styled-components";
 import pinkBlob from "../../assets/blobPink.png";
 import purpleBlob from "../../assets/blob purple.png";
 import whiteBlob from "../../assets/blob white.png";
-import arrow from "../../assets/Arrow Right.svg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import Mobile from "../../assets/mobile.svg";
 
 const move = keyframes`
@@ -176,6 +178,78 @@ const CTA = styled.button`
 `;
 
 const HeroSection = () => {
+  const [click, setClick] = useState(false);
+  //const handleClick = () => setClick(!click);
+  const ref = useRef(null);
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const scrollUp = (id, e) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  };
+
+  const handleClick = (id, e) => {
+    setClick(!click);
+    scrollUp(id, e);
+  };
+
+  useEffect(() => {
+    const element = ref.current;
+
+    const mq = window.matchMedia("(max-width: 40em)");
+    // console.log("mq", mq);
+    if (mq.matches) {
+      gsap.to(element, {
+        position: "fixed",
+        top: "0",
+        left: "0",
+        right: "0",
+        padding: "1rem 2.5rem",
+
+        borderRadius: "0 0 50px 50px",
+
+        border: "2px solid var(--white)",
+
+        duration: 1,
+        ease: "power1.out",
+
+        scrollTrigger: {
+          trigger: element,
+          start: "bottom+=200 top",
+          end: "+=100",
+          scrub: true,
+        },
+      });
+    } else {
+      gsap.to(element, {
+        position: "fixed",
+        top: "1rem",
+        left: "3rem",
+        right: "3rem",
+        padding: "1.5rem 2rem",
+
+        borderRadius: "50px",
+
+        border: "3px solid var(--white)",
+
+        duration: 1,
+        ease: "power1.out",
+
+        scrollTrigger: {
+          trigger: element,
+          start: "bottom+=300 top",
+          end: "+=250",
+          scrub: true,
+        },
+      });
+    }
+  }, []);
   return (
     <HomeSection id="home">
       <Blobs>
@@ -199,13 +273,9 @@ const HeroSection = () => {
           <Title>
             Save time & money with <span>OCOMNI</span> data automation
           </Title>
-          <SubText>
-            We create integrated applications to streamline data automation for
-            advisory service consultants
-          </SubText>
-          <CTA>
-            Get in touch &nbsp;
-            <img src={arrow} alt="cta" width="100" height="100" />
+          <SubText></SubText>
+          <CTA href="#about" onClick={(e) => scrollUp("services", e)}>
+            <a>See Examples</a>
           </CTA>
         </Lb>
 
