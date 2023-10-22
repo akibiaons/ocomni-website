@@ -3,9 +3,9 @@ import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Tube from "../../assets/3dtube.png";
-import Cone from "../../assets/3dtriangle.png";
-import Capsule from "../../assets/3dcapsule.png";
+// import Tube from "../../assets/3dtube.png";
+// import Cone from "../../assets/3dtriangle.png";
+// import Capsule from "../../assets/3dcapsule.png";
 
 import TextBlock from "../../components/TextBlock";
 import SvgBlock from "../../components/SvgBlock";
@@ -320,7 +320,7 @@ const Services = () => {
     <ServiceSection id="services">
       <Background ref={ref}>
         <Title style={{ marginTop: 10 }} className="title">
-          What We Do
+          How we do it
         </Title>
         <Line id="line" />
         <Triangle id="triangle" />
@@ -332,9 +332,9 @@ const Services = () => {
           title={<h1>Utilizing optimal design principles</h1>}
           subText={<h5>Easy to use and intuitive interfaces</h5>}
         />
-        <OBJ>
+        {/* <OBJ>
           <img src={Tube} alt="Tube Object" width="400" height="400" />
-        </OBJ>
+        </OBJ> */}
         <SvgBlock svg="Design.svg" />
       </Content>
       <Content ref={addToRefs}>
@@ -348,9 +348,9 @@ const Services = () => {
             </h5>
           }
         />
-        <OBJ>
+        {/* <OBJ>
           <img src={Cone} alt="Cone Object" width="400" height="400" />
-        </OBJ>
+        </OBJ> */}
         <SvgBlock svg="Develope.svg" />
       </Content>
       <Content>
@@ -364,9 +364,9 @@ const Services = () => {
             </h5>
           }
         />
-        <OBJ>
+        {/* <OBJ>
           <img src={Capsule} alt="Capsule Object" width="400" height="400" />
-        </OBJ>
+        </OBJ> */}
         <SvgBlock svg="Support.svg" />
       </Content>
     </ServiceSection>
