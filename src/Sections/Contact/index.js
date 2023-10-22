@@ -3,6 +3,9 @@ import LinkedId from "../../assets/linkedin-brands.svg";
 import Twitter from "../../assets/twitter-square-brands.svg";
 import Instagram from "../../assets/instagram-square-brands.svg";
 import styled from "styled-components";
+import { serverTimestamp, addDoc, collection, doc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { useEffect, useState } from "react";
 
 const ContactSection = styled.section`
   width: 100vw;
@@ -125,6 +128,47 @@ const Row = styled.div`
   }
 `;
 const Contact = () => {
+  // Logic for the form goes here
+  const [loading, setLoading] = useState(false);
+  // Below is the state set to be an empty string...
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  // Object of the name, email, phone, and message
+  const { name, email, phone, message } = formData;
+
+  // On change function that runs a conditional if the target file is not the event driven target file which causes it to revert back to its prev state...not too sure what else it does but it seems to be an important part of the form...
+  function onChange(e) {
+    if (!e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.id]: e.target.value,
+      }));
+    }
+  }
+  // Below is an async function to add client inquiries to firestore db
+  async function onSubmitCONTACT(e) {
+    e.preventDefault();
+    setLoading(true);
+    const formDataCopy = {
+      ...formData,
+      timestamp: serverTimestamp(),
+    };
+    delete formDataCopy.formData;
+    const docRef = await addDoc(collection(db, "contact"), formDataCopy);
+    setLoading(false);
+  }
+  useEffect(() => {
+    document.body.classList.add("page-animation");
+    return () => {
+      document.body.classList.remove("page-animation");
+    };
+  }, []);
+
   return (
     <ContactSection id="contact">
       <Title>Get in touch</Title>
@@ -144,7 +188,7 @@ const Contact = () => {
           <img src={Instagram} alt="Instagram" />
         </a>
       </Icons>
-      <Form>
+      <Form onSubmit={onSubmitCONTACT}>
         <Row>
           <input name="name" type="text" placeholder="Your Name" />
           <input name="email" type="email" placeholder="Working Email" />
