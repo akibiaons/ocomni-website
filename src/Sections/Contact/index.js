@@ -146,19 +146,15 @@ const Contact = () => {
       </Icons>
       <Form>
         <Row>
-          <input name="name" type="text" placeholder="your name" />
-          <input
-            name="email"
-            type="email"
-            placeholder="enter working email id"
-          />
+          <input name="name" type="text" placeholder="Your Name" />
+          <input name="email" type="email" placeholder="Working Email" />
         </Row>
         <textarea
           name=""
           id=""
           cols="30"
           rows="2"
-          placeholder="your message"
+          placeholder="Additional Info"
         ></textarea>
         <div style={{ margin: "0 auto" }}>
           <button
