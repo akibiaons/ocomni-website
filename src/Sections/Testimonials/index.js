@@ -80,13 +80,13 @@ const Testimonials = () => {
 
   return (
     <Section>
-      <Title>Few good words about us!</Title>
+      <Title>Here's some reviews!</Title>
       <Carousal>
         <Slider {...settings}>
           <Card
-            text="CodeBucks has been essential part of our business. I would definetly
-        recommend CodeBucks. It has been amazing to have them."
-            name="Jenny (CodeCall)"
+            text=" Ocomni has been essential for saving money. By automating the proposal process for oboarding advisors entering our firm."
+            name=" Timothy Garcia"
+            company="(CUSO Financial Services, L.P.)"
             image="avatar-1"
           />
 
