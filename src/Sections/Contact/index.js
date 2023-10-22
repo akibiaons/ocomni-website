@@ -130,17 +130,17 @@ const Contact = () => {
       <Title>Get in touch</Title>
       {/* <Text>Lorem ipsum dolor sit amet, consectetur adipisicing.</Text> */}
       <Icons>
-        <a href="https://www.facebook.com/">
+        <a href="">
           {" "}
           <img src={Facebook} alt="Facebook" />
         </a>
-        <a href="https://www.linkedin.com//">
+        <a href="">
           <img src={LinkedId} alt="LinkedId" />
         </a>
-        <a href="https://twitter.com/">
+        <a href="">
           <img src={Twitter} alt="Twitter" />
         </a>
-        <a href="https://www.instagram.com/">
+        <a href="">
           <img src={Instagram} alt="Instagram" />
         </a>
       </Icons>
