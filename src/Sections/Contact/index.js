@@ -57,11 +57,17 @@ const Icons = styled.div`
   }
 `;
 
+const Container = styled.section`
+  width: 50%;
+`;
+
 const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-direction: column; /*Changing to row for desktop makes it look alright*/
   justify-content: center;
   input {
+    flex-grow: 0;
     padding: 1rem calc(0.5rem + 1vw);
     margin-bottom: 1rem;
     background-color: var(--nav2);
@@ -80,6 +86,9 @@ const Form = styled.form`
     }
     &[name="name"] {
       margin-right: 2rem;
+    }
+    &[name="phone"] {
+      margin-left: 2rem;
     }
   }
   textarea {
@@ -123,6 +132,9 @@ const Row = styled.div`
     input {
       &[name="name"] {
         margin-right: 0;
+      }
+      &[name="phone"] {
+        margin-left: 0;
       }
     }
   }
@@ -188,28 +200,31 @@ const Contact = () => {
           <img src={Instagram} alt="Instagram" />
         </a>
       </Icons>
-      <Form onSubmit={onSubmitCONTACT}>
-        <Row>
-          <input name="name" type="text" placeholder="Your Name" />
-          <input name="email" type="email" placeholder="Working Email" />
-        </Row>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="2"
-          placeholder="Additional Info"
-        ></textarea>
-        <div style={{ margin: "0 auto" }}>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            Submit
-          </button>
-        </div>
-      </Form>
+      <Container>
+        <Form onSubmit={onSubmitCONTACT}>
+          <Row>
+            <input name="name" type="text" placeholder="Your Name" />
+            <input name="email" type="email" placeholder="Working Email" />
+            <input name="phone" type="phone" placeholder="(123) 456-7890" />
+          </Row>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="2"
+            placeholder="Additional Info"
+          ></textarea>
+          <div style={{ margin: "0 auto" }}>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Submit
+            </button>
+          </div>
+        </Form>
+      </Container>
     </ContactSection>
   );
 };
