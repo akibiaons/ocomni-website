@@ -3,7 +3,7 @@ import LinkedId from "../../assets/linkedin-brands.svg";
 import Twitter from "../../assets/twitter-square-brands.svg";
 import Instagram from "../../assets/instagram-square-brands.svg";
 import styled from "styled-components";
-import { serverTimestamp, addDoc, collection, doc } from "firebase/firestore";
+import { serverTimestamp, addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useEffect, useState } from "react";
 
@@ -58,7 +58,7 @@ const Icons = styled.div`
 `;
 
 const Container = styled.section`
-  width: 50%;
+  width: full;
 `;
 
 const Form = styled.form`
@@ -152,7 +152,6 @@ const Contact = () => {
 
   // Object of the name, email, phone, and message
   const { name, email, phone, message } = formData;
-
   // On change function that runs a conditional if the target file is not the event driven target file which causes it to revert back to its prev state...not too sure what else it does but it seems to be an important part of the form...
   function onChange(e) {
     if (!e.target.files) {
@@ -171,7 +170,10 @@ const Contact = () => {
       timestamp: serverTimestamp(),
     };
     delete formDataCopy.formData;
-    const docRef = await addDoc(collection(db, "contact"), formDataCopy);
+    const docRef = await addDoc(
+      collection(db, "form-submissions"),
+      formDataCopy
+    );
     setLoading(false);
   }
   useEffect(() => {
@@ -203,22 +205,49 @@ const Contact = () => {
       <Container>
         <Form onSubmit={onSubmitCONTACT}>
           <Row>
-            <input name="name" type="text" placeholder="Your Name" />
-            <input name="email" type="email" placeholder="Working Email" />
-            <input name="phone" type="phone" placeholder="(123) 456-7890" />
+            <input
+              name="name"
+              type="text"
+              id="name"
+              placeholder="Your Name"
+              value={name}
+              onChange={onChange}
+            />
+            <input
+              name="email"
+              type="tel"
+              id="email"
+              placeholder="Work Email"
+              value={email}
+              onChange={onChange}
+              required
+            />
+            <input
+              name="phone"
+              type="telephone"
+              id="phone"
+              placeholder="(123) 456-7890"
+              value={phone}
+              onChange={onChange}
+              required
+            />
           </Row>
           <textarea
             name=""
-            id=""
+            id="message"
             cols="30"
             rows="2"
             placeholder="Additional Info"
+            value={message}
+            onChange={onChange}
+            required
           ></textarea>
           <div style={{ margin: "0 auto" }}>
             <button
-              onClick={(e) => {
-                e.preventDefault();
-              }}
+              type="submit"
+              // onClick={(e) => {
+              //   e.preventDefault();
+              // }}
             >
               Submit
             </button>

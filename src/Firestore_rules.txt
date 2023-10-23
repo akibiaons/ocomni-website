@@ -1,0 +1,17 @@
+//Firestore rules
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+
+    // Users
+    match /users/{user} {
+    	allow read;
+    	allow create;
+    	allow update: if request.auth.uid == user
+    }
+  
+    match /contact/{contactInfo} {
+    allow read,create, write;
+    }
+  }
+}
