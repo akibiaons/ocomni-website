@@ -51,7 +51,7 @@ const Main = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: calc(2rem + 1vw);
   font-weight: 600;
   text-align: center;
 `;

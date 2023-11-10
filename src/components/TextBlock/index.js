@@ -6,7 +6,7 @@ const Lb = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  width: 50%;
+  width: 100%;
   line-height: 1.5;
   color: var(--white);
 
@@ -26,7 +26,7 @@ const Topic = styled.span`
 
   background-color: var(--nav);
   color: var(--white);
-  font-weight: 700;
+  font-weight: 400;
   font-size: calc(0.4rem + 0.4vw);
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -45,7 +45,7 @@ const Circle = styled.span`
 `;
 
 const Title = styled.div`
-  font-size: calc(1rem + 1vw);
+  font-size: calc(3rem + 1vw);
   line-height: 1.2;
   padding: 0.5rem 0;
   @media only Screen and (max-width: 48em) {

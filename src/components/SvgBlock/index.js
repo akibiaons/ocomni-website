@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Rb = styled.div`
-  display: flex;
+  display: flex-col;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 5%;
   position: relative;
   /* z-index: 10; */
   svg {
