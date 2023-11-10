@@ -141,6 +141,8 @@ const Title = styled.h1`
   line-height: 1.2;
   padding: 0.5rem 0;
   span {
+    font-family: "OCOMNI", sans-serif;
+    font-weight: 700;
     color: #803bec;
   }
 `;
