@@ -3,6 +3,9 @@ import LinkedId from "../../assets/linkedin-brands.svg";
 import Twitter from "../../assets/twitter-square-brands.svg";
 import Instagram from "../../assets/instagram-square-brands.svg";
 import styled from "styled-components";
+import { serverTimestamp, addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase";
+import { useEffect, useState } from "react";
 
 const ContactSection = styled.section`
   width: 100vw;
@@ -54,11 +57,17 @@ const Icons = styled.div`
   }
 `;
 
+const Container = styled.section`
+  width: full;
+`;
+
 const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-direction: column; /*Changing to row for desktop makes it look alright*/
   justify-content: center;
   input {
+    flex-grow: 0;
     padding: 1rem calc(0.5rem + 1vw);
     margin-bottom: 1rem;
     background-color: var(--nav2);
@@ -77,6 +86,9 @@ const Form = styled.form`
     }
     &[name="name"] {
       margin-right: 2rem;
+    }
+    &[name="phone"] {
+      margin-left: 2rem;
     }
   }
   textarea {
@@ -121,55 +133,127 @@ const Row = styled.div`
       &[name="name"] {
         margin-right: 0;
       }
+      &[name="phone"] {
+        margin-left: 0;
+      }
     }
   }
 `;
 const Contact = () => {
+  // Logic for the form goes here
+  const [loading, setLoading] = useState(false);
+  // Below is the state set to be an empty string...
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  // Object of the name, email, phone, and message
+  const { name, email, phone, message } = formData;
+  // On change function that runs a conditional if the target file is not the event driven target file which causes it to revert back to its prev state...not too sure what else it does but it seems to be an important part of the form...
+  function onChange(e) {
+    if (!e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.id]: e.target.value,
+      }));
+    }
+  }
+  // Below is an async function to add client inquiries to firestore db
+  async function onSubmitCONTACT(e) {
+    e.preventDefault();
+    setLoading(true);
+    const formDataCopy = {
+      ...formData,
+      timestamp: serverTimestamp(),
+    };
+    delete formDataCopy.formData;
+    const docRef = await addDoc(
+      collection(db, "form-submissions"),
+      formDataCopy
+    );
+    setLoading(false);
+  }
+  useEffect(() => {
+    document.body.classList.add("page-animation");
+    return () => {
+      document.body.classList.remove("page-animation");
+    };
+  }, []);
+
   return (
     <ContactSection id="contact">
       <Title>Get in touch</Title>
       {/* <Text>Lorem ipsum dolor sit amet, consectetur adipisicing.</Text> */}
       <Icons>
-        <a href="https://www.facebook.com/">
+        <a href="">
           {" "}
           <img src={Facebook} alt="Facebook" />
         </a>
-        <a href="https://www.linkedin.com//">
+        <a href="">
           <img src={LinkedId} alt="LinkedId" />
         </a>
-        <a href="https://twitter.com/">
+        <a href="">
           <img src={Twitter} alt="Twitter" />
         </a>
-        <a href="https://www.instagram.com/">
+        <a href="">
           <img src={Instagram} alt="Instagram" />
         </a>
       </Icons>
-      <Form>
-        <Row>
-          <input name="name" type="text" placeholder="your name" />
-          <input
-            name="email"
-            type="email"
-            placeholder="enter working email id"
-          />
-        </Row>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="2"
-          placeholder="your message"
-        ></textarea>
-        <div style={{ margin: "0 auto" }}>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            Submit
-          </button>
-        </div>
-      </Form>
+      <Container>
+        <Form onSubmit={onSubmitCONTACT}>
+          <Row>
+            <input
+              name="name"
+              type="text"
+              id="name"
+              placeholder="Your Name"
+              value={name}
+              onChange={onChange}
+            />
+            <input
+              name="email"
+              type="tel"
+              id="email"
+              placeholder="Work Email"
+              value={email}
+              onChange={onChange}
+              required
+            />
+            <input
+              name="phone"
+              type="telephone"
+              id="phone"
+              placeholder="(123) 456-7890"
+              value={phone}
+              onChange={onChange}
+              required
+            />
+          </Row>
+          <textarea
+            name=""
+            id="message"
+            cols="30"
+            rows="2"
+            placeholder="Additional Info"
+            value={message}
+            onChange={onChange}
+            required
+          ></textarea>
+          <div style={{ margin: "0 auto" }}>
+            <button
+              type="submit"
+              // onClick={(e) => {
+              //   e.preventDefault();
+              // }}
+            >
+              Submit
+            </button>
+          </div>
+        </Form>
+      </Container>
     </ContactSection>
   );
 };

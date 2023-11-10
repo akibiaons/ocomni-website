@@ -43,7 +43,13 @@ const NAME = styled.h3`
   font-size: calc(0.5rem + 1vw);
 `;
 
-const Card = ({ name, text, image }) => {
+const COMPANY = styled.h4`
+  color: var(--pink);
+  padding-top: 1rem;
+  font-size: calc(0.2rem + 1vw);
+`;
+
+const Card = ({ name, text, company, image }) => {
   const Avatar = require(`../../assets/${image}.jpg`).default;
 
   return (
@@ -51,6 +57,7 @@ const Card = ({ name, text, image }) => {
       <Image img={Avatar} width="400" height="400" />
       <TEXT>{text}</TEXT>
       <NAME>{name}</NAME>
+      <COMPANY>{company}</COMPANY>
     </CARD>
   );
 };

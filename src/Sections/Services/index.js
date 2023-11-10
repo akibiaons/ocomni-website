@@ -3,9 +3,9 @@ import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Tube from "../../assets/3dtube.png";
-import Cone from "../../assets/3dtriangle.png";
-import Capsule from "../../assets/3dcapsule.png";
+// import Tube from "../../assets/3dtube.png";
+// import Cone from "../../assets/3dtriangle.png";
+// import Capsule from "../../assets/3dcapsule.png";
 
 import TextBlock from "../../components/TextBlock";
 import SvgBlock from "../../components/SvgBlock";
@@ -102,8 +102,8 @@ const Content = styled.div`
 
 const OBJ = styled.div`
   position: absolute;
-  top: 80%;
-  right: 35%;
+  top: 30%;
+  right: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -320,7 +320,7 @@ const Services = () => {
     <ServiceSection id="services">
       <Background ref={ref}>
         <Title style={{ marginTop: 10 }} className="title">
-          What We Do
+          How we do it
         </Title>
         <Line id="line" />
         <Triangle id="triangle" />
@@ -333,7 +333,13 @@ const Services = () => {
           subText={<h5>Easy to use and intuitive interfaces</h5>}
         />
         <OBJ>
-          <img src={Tube} alt="Tube Object" width="400" height="400" />
+          {/* Commented out to add some vectors, for the landing page, but not forget the general layout
+          <img 
+            src="https://raw.githubusercontent.com/Web-Development-Services-Hub-WDS/Web-Development-Services-Hub-WDS.github.io/main/images/desktop-dev.png"
+            alt="Tube Object"
+            width="500"
+            height="500"
+          /> */}
         </OBJ>
         <SvgBlock svg="Design.svg" />
       </Content>
@@ -348,9 +354,9 @@ const Services = () => {
             </h5>
           }
         />
-        <OBJ>
+        {/* <OBJ>
           <img src={Cone} alt="Cone Object" width="400" height="400" />
-        </OBJ>
+        </OBJ> */}
         <SvgBlock svg="Develope.svg" />
       </Content>
       <Content>
@@ -364,9 +370,9 @@ const Services = () => {
             </h5>
           }
         />
-        <OBJ>
+        {/* <OBJ>
           <img src={Capsule} alt="Capsule Object" width="400" height="400" />
-        </OBJ>
+        </OBJ> */}
         <SvgBlock svg="Support.svg" />
       </Content>
     </ServiceSection>

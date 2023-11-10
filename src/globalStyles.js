@@ -8,10 +8,20 @@ export const GlobalStyle = createGlobalStyle`
    --purple:#803bec;
    --pink:#e5a1f8;
    --white:#fff;
-   --nav:#35353f;
+   --nav:#0a0b10;
    --nav2:#3f3d56;
 }
 
+@font-face {
+    font-family: "OCOMNI";
+    src: 
+    url("//cdn.fontshare.com/wf/BFBSY7LX5W2U2EROCLVVTQP4VS7S4PC3/IIUX4FGTMD2LK2VWD3RVTAS4SSMUN7B5/53RZKGODFYDW3QHTIL7IPOWTBCSUEZK7.woff2")format("woff2"),
+      url("//cdn.fontshare.com/wf/BFBSY7LX5W2U2EROCLVVTQP4VS7S4PC3/IIUX4FGTMD2LK2VWD3RVTAS4SSMUN7B5/53RZKGODFYDW3QHTIL7IPOWTBCSUEZK7.woff")format("woff"),
+      url("//cdn.fontshare.com/wf/BFBSY7LX5W2U2EROCLVVTQP4VS7S4PC3/IIUX4FGTMD2LK2VWD3RVTAS4SSMUN7B5/53RZKGODFYDW3QHTIL7IPOWTBCSUEZK7.ttf")format("truetype");
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+  }  
 
 *,*::before,*::after{
     margin:0;
