@@ -102,8 +102,8 @@ const Content = styled.div`
 
 const OBJ = styled.div`
   position: absolute;
-  top: 80%;
-  right: 35%;
+  top: 30%;
+  right: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -332,9 +332,15 @@ const Services = () => {
           title={<h1>Utilizing optimal design principles</h1>}
           subText={<h5>Easy to use and intuitive interfaces</h5>}
         />
-        {/* <OBJ>
-          <img src={Tube} alt="Tube Object" width="400" height="400" />
-        </OBJ> */}
+        <OBJ>
+          {/* Commented out to add some vectors, for the landing page, but not forget the general layout
+          <img 
+            src="https://raw.githubusercontent.com/Web-Development-Services-Hub-WDS/Web-Development-Services-Hub-WDS.github.io/main/images/desktop-dev.png"
+            alt="Tube Object"
+            width="500"
+            height="500"
+          /> */}
+        </OBJ>
         <SvgBlock svg="Design.svg" />
       </Content>
       <Content ref={addToRefs}>
