@@ -34,6 +34,7 @@ const HomeSection = styled.section`
 `;
 
 const Blobs = styled.div`
+  padding-top: 2rem;
   width: 100%;
   position: absolute;
   right: 0;
