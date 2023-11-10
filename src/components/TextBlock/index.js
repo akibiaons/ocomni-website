@@ -54,8 +54,11 @@ const Title = styled.div`
 `;
 
 const SubText = styled.div`
-  font-size: calc(0.5rem + 0.5vw);
+  font-size: calc(1rem + 1vw);
   color: darkgray;
+  h5 {
+    font-weight: 400;
+  }
   @media only Screen and (max-width: 48em) {
     font-size: calc(0.5rem + 1vw);
   }
