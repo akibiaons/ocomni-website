@@ -66,7 +66,7 @@ const MainContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70vw;
+  width: 86vw;
   @media only Screen and (max-width: 48em) {
     flex-direction: column;
     justify-content: center;
@@ -97,7 +97,7 @@ const Lb = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 50%;
+  width: 100%;
   line-height: 1.5;
   color: var(--white);
   position: relative;
