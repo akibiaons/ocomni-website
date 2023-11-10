@@ -46,7 +46,7 @@ const Nav = styled.nav`
     display: none;
   }
   a {
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.5;
     color: var(--white);
     &::after {

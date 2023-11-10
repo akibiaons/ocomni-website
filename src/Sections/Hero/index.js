@@ -121,7 +121,7 @@ const Topic = styled.span`
   justify-content: center;
   background-color: var(--nav);
   color: var(--white);
-  font-weight: 700;
+  font-weight: 400;
   font-size: calc(0.4rem + 0.4vw);
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -140,6 +140,7 @@ const Title = styled.h1`
   font-size: calc(2rem + 1vw);
   line-height: 1.2;
   padding: 0.5rem 0;
+  font-weight: 700;
   span {
     font-family: "OCOMNI", sans-serif;
     font-weight: 700;
@@ -153,8 +154,8 @@ const SubText = styled.h5`
 `;
 
 const CTA = styled.button`
-  background-color: var(--white);
-  color: #0a0b10;
+  background-color: var(--purple);
+  color: var(--white);
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   border-radius: 20px;
