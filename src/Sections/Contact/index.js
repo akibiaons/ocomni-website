@@ -170,12 +170,31 @@ const Contact = () => {
       timestamp: serverTimestamp(),
     };
     delete formDataCopy.formData;
-    const docRef = await addDoc(
-      collection(db, "form-submissions"),
-      formDataCopy
-    );
+
+    try {
+      const docRef = await addDoc(
+        collection(db, "form-submissions"),
+        formDataCopy
+      );
+      // Form submission is successful, display an alert
+      // alert("Form submitted successfully");
+
+      // Reset the form data to initial state
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      // Handle any errors here
+      console.error("Error submitting form: ", error);
+      // alert("Error submitting form");
+    }
+
     setLoading(false);
   }
+
   useEffect(() => {
     document.body.classList.add("page-animation");
     return () => {
