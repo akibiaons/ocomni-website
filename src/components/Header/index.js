@@ -46,8 +46,6 @@ const Nav = styled.nav`
     display: none;
   }
   a {
-    // font-family: "OCOMNI", sans-serif;
-    // font-weight: 700;
     line-height: 1.5;
     color: var(--white);
     &::after {
