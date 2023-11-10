@@ -44,7 +44,7 @@ const Background = styled.div`
 const Title = styled.h1`
   color: var(--white);
   display: inline-block;
-  font-size: 2rem;
+  font-size: calc(2rem + 1vw);
   font-weight: 600;
   /* margin-top: 4rem; */
   margin-top: 1rem;
@@ -333,15 +333,6 @@ const Services = () => {
           title={<h1>Utilizing optimal design principles</h1>}
           subText={<h5>Easy to use and intuitive interfaces</h5>}
         />
-        <OBJ>
-          {/* Commented out to add some vectors, for the landing page, but not forget the general layout
-          <img 
-            src="https://raw.githubusercontent.com/Web-Development-Services-Hub-WDS/Web-Development-Services-Hub-WDS.github.io/main/images/desktop-dev.png"
-            alt="Tube Object"
-            width="500"
-            height="500"
-          /> */}
-        </OBJ>
         <SvgBlock svg="Design.svg" />
       </Content>
       <Content ref={addToRefs}>
@@ -355,9 +346,6 @@ const Services = () => {
             </h5>
           }
         />
-        {/* <OBJ>
-          <img src={Cone} alt="Cone Object" width="400" height="400" />
-        </OBJ> */}
         <SvgBlock svg="Develope.svg" />
       </Content>
       <Content>
@@ -371,9 +359,6 @@ const Services = () => {
             </h5>
           }
         />
-        {/* <OBJ>
-          <img src={Capsule} alt="Capsule Object" width="400" height="400" />
-        </OBJ> */}
         <SvgBlock svg="Support.svg" />
       </Content>
     </ServiceSection>
