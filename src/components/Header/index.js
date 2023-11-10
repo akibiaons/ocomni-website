@@ -20,7 +20,8 @@ const Headers = styled.header`
   }
 `;
 
-const Logo = styled.a`
+const Logo = styled.h3`
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   width: 2rem;
@@ -28,6 +29,10 @@ const Logo = styled.a`
   cursor: pointer;
   padding-top: 0.5rem;
   color: #803bec;
+  h3 {
+    font-family: "OCOMNI", sans-serif;
+    font-weight: 700;
+  }
 `;
 
 const Nav = styled.nav`
@@ -41,7 +46,8 @@ const Nav = styled.nav`
     display: none;
   }
   a {
-    font-weight: 600;
+    // font-family: "OCOMNI", sans-serif;
+    // font-weight: 700;
     line-height: 1.5;
     color: var(--white);
     &::after {
@@ -232,7 +238,7 @@ const Header = () => {
   return (
     <Headers ref={ref}>
       <Logo>
-        <h3>OCOMNI</h3>
+        <h3>Ocomni</h3>
       </Logo>
       <Nav>
         <a href="#home" onClick={(e) => scrollUp("home", e)}>
