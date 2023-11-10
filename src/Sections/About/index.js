@@ -52,7 +52,8 @@ const Main = styled.div`
 
 const Title = styled.h1`
   font-size: 2rem;
-  display: inline-block;
+  font-weight: 600;
+  text-align: center;
 `;
 
 const CurvedLine = styled.div`
@@ -98,6 +99,7 @@ const Human = styled.div`
 const Text = styled.h4`
   font-size: calc(0.5rem + 1vw);
   line-height: 1.5;
+  font-weight: 400;
   color: var(--nav2);
 `;
 const Circle = styled.span`
@@ -121,13 +123,10 @@ const About = () => {
   return (
     <AboutSection id="about">
       <Waves src={wave} alt="" />
-      <Hand>
-        <img src={hand} alt="" />
-      </Hand>
+      <Hand>{/* <img src={hand} alt="" /> */}</Hand>
       <Main>
         <div>
           <Title>About Us</Title>
-          <CurvedLine />
         </div>
         <Content>
           <Rocket>
@@ -135,10 +134,10 @@ const About = () => {
           </Rocket>
           <AboutText>
             <Human>
-              <img src={human} alt="" width="400" height="400" />
+              {/* <img src={human} alt="" width="400" height="400" /> */}
             </Human>
 
-            <Text style={{ marginBottom: 14, marginTop: 20 }}>
+            <Text>
               Gone are the days of inputting excel data by hand into your
               advisory platform, or spending time and money hiring data entry
               workers.

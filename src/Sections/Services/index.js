@@ -45,6 +45,7 @@ const Title = styled.h1`
   color: var(--white);
   display: inline-block;
   font-size: 2rem;
+  font-weight: 600;
   /* margin-top: 4rem; */
   margin-top: 1rem;
   position: relative;
