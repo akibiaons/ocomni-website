@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Headers = styled.header`
   display: flex;
@@ -161,6 +162,9 @@ const MobileMenu = styled.nav`
   }
 `;
 const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [click, setClick] = useState(false);
   //const handleClick = () => setClick(!click);
   const ref = useRef(null);
@@ -249,6 +253,7 @@ const Header = () => {
         <a href="#services" onClick={(e) => scrollUp("services", e)}>
           Case Studies
         </a>
+        <a onClick={() => navigate("/blog")}>Blog</a>
         <a href="#contact" onClick={(e) => scrollUp("contact", e)}>
           <Button>Contact Us</Button>
         </a>
