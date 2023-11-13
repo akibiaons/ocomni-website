@@ -47,6 +47,7 @@ const Nav = styled.nav`
     display: none;
   }
   a {
+    cursor: pointer;
     font-weight: 500;
     line-height: 1.5;
     color: var(--white);
