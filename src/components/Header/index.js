@@ -164,6 +164,7 @@ const MobileMenu = styled.nav`
 `;
 const Header = () => {
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const navigate = useNavigate();
 
   const [click, setClick] = useState(false);
@@ -175,11 +176,25 @@ const Header = () => {
   const scrollUp = (id, e) => {
     e.preventDefault();
     const element = document.getElementById(id);
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+            inline: "nearest",
+          });
+        }
+      }, 0);
+    }
   };
 
   const handleClick = (id, e) => {
