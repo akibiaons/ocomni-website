@@ -199,7 +199,13 @@ const Header = () => {
 
   const handleClick = (id, e) => {
     setClick(!click);
-    scrollUp(id, e);
+    if (id.startsWith("/")) {
+      // It's a route, navigate to it
+      navigate(id);
+    } else {
+      // It's an element id, scroll to it
+      scrollUp(id, e);
+    }
   };
 
   useEffect(() => {
@@ -269,7 +275,7 @@ const Header = () => {
         <a href="#services" onClick={(e) => scrollUp("services", e)}>
           Case Studies
         </a>
-        <a onClick={() => navigate("/blog")}>Blog</a>
+        <a onClick={() => navigate("/posts")}>Blog</a>
         <a href="#contact" onClick={(e) => scrollUp("contact", e)}>
           <Button>Contact Us</Button>
         </a>
@@ -287,6 +293,7 @@ const Header = () => {
         <a href="#services" onClick={(e) => handleClick("services", e)}>
           Case Studies
         </a>
+        <a onClick={(e) => handleClick("/posts", e)}>Blog</a>
         <a href="#contact" onClick={(e) => handleClick("contact", e)}>
           <Button>Contact Us</Button>
         </a>
