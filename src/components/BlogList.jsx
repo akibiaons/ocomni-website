@@ -15,14 +15,26 @@ const PostTitle = styled.h2`
   // Styling for the post title
 `;
 
-const PostContent = styled.p`
+const PostExcerpt = styled.p`
   // Styling for the post excerpt
 `;
 
 const PostImage = styled.img`
   width: 100%;
   height: auto;
+  border-radius: 8px; // Optional: for rounded image corners
+  margin-bottom: 15px; // Gives some space between image and text
+`;
+
+const ReadMoreLink = styled(Link)`
+  color: blue; // Choose your color
+  text-decoration: none;
+  font-weight: bold;
   // Add more styling as needed
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 function BlogList() {
@@ -32,8 +44,7 @@ function BlogList() {
     fetch("http://localhost:1337/api/posts?populate=*")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Log the data to see its structure
-        setPosts(data.data); // Assuming the data is in { data: [...posts] } format
+        setPosts(data.data);
       });
   }, []);
 
@@ -48,10 +59,12 @@ function BlogList() {
             />
           )}
           <PostTitle>{post.attributes.title}</PostTitle>
-          <PostContent>
-            {post.attributes.content.substring(0, 200)}...
-          </PostContent>
-          {/* ... other details ... */}
+          <PostExcerpt>
+            {post.attributes.excerpt ||
+              post.attributes.content.substring(0, 200)}
+            ...
+          </PostExcerpt>
+          <ReadMoreLink to={`/posts/${post.id}`}>Read More</ReadMoreLink>
         </PostCard>
       ))}
     </div>
