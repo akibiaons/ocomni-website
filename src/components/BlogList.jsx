@@ -38,37 +38,7 @@ const ReadMoreLink = styled(Link)`
 `;
 
 function BlogList() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:1337/api/posts?populate=*")
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts(data.data);
-      });
-  }, []);
-
-  return (
-    <div>
-      {posts.map((post) => (
-        <PostCard key={post.id}>
-          {post.attributes.image && (
-            <PostImage
-              src={`http://localhost:1337${post.attributes.image.data.attributes.url}`}
-              alt={post.attributes.title}
-            />
-          )}
-          <PostTitle>{post.attributes.title}</PostTitle>
-          <PostExcerpt>
-            {post.attributes.excerpt ||
-              post.attributes.content.substring(0, 200)}
-            ...
-          </PostExcerpt>
-          <ReadMoreLink to={`/posts/${post.id}`}>Read More</ReadMoreLink>
-        </PostCard>
-      ))}
-    </div>
-  );
+  return <div></div>;
 }
 
 export default BlogList;
