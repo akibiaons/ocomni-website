@@ -2,8 +2,10 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./globalStyles";
 import BlogList from "./components/blog-components/BlogList";
+import Post from "./components/blog-components/Post";
 import SinglePost from "./components/blog-components/SinglePost";
 import Article from "./Pages/Article";
+import AllBlogsPage from "./Pages/Allblogs";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Header = lazy(() => import("./components/Header/index"));
@@ -19,9 +21,10 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/posts" element={<BlogList />} />
+            <Route path="/all-blogs" element={<AllBlogsPage />} />
             <Route path="/posts/:id" element={<SinglePost />} />
             <Route path="/article/:slug" element={<Article />} />
+            <Route path="/post/:slug" element={<Post />} />
           </Routes>
           <Footer />
           <ScrollToTop />

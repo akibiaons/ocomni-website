@@ -275,7 +275,7 @@ const Header = () => {
         <a href="#services" onClick={(e) => scrollUp("services", e)}>
           Case Studies
         </a>
-        <a onClick={() => navigate("/posts")}>Blog</a>
+        <a onClick={() => navigate("/all-blogs")}>Blog</a>
         <a href="#contact" onClick={(e) => scrollUp("contact", e)}>
           <Button>Contact Us</Button>
         </a>
@@ -293,7 +293,7 @@ const Header = () => {
         <a href="#services" onClick={(e) => handleClick("services", e)}>
           Case Studies
         </a>
-        <a onClick={(e) => handleClick("/posts", e)}>Blog</a>
+        <a onClick={(e) => handleClick("/all-blogs", e)}>Blog</a>
         <a href="#contact" onClick={(e) => handleClick("contact", e)}>
           <Button>Contact Us</Button>
         </a>
