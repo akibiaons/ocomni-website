@@ -1,6 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
+import styled from "styled-components";
+
+const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PaginationLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 0.75rem; /* mr-3 */
+  transition: color 200ms ease-in-out;
+
+  &:hover {
+    color: #6b7280; /* text-gray-500 */
+  }
+`;
+
+const PaginationList = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* gap-1 */
+`;
+
+const PaginationItem = styled.li`
+  background-color: ${(props) =>
+    props.isActive ? "#8b5cf6" : "transparent"}; /* bg-purple-600 or bg-none */
+  color: ${(props) => (props.isActive ? "white" : "black")};
+  padding: 0.5rem; /* px-2 */
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+
+  &:hover {
+    background-color: #374151; /* hover:bg-slate-700 */
+    color: white; /* hover:text-white */
+  }
+`;
+
+const IconWrapper = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; /* Adjust icon size as needed */
+`;
 
 const Pagination = ({ totalPage }) => {
   const { search } = useLocation();
@@ -32,40 +77,33 @@ const Pagination = ({ totalPage }) => {
 
   console.log(page);
   return (
-    <div className="flex flex-row justify-center items-center">
-      <Link
-        className="flex flex-row cursor-pointer mr-3 items-center font-primarybody hover:text-gray-500 transition duration-200 ease-in-out"
-        to={`?page=${page - 1 <= 1 ? 1 : page - 1}`}
-      >
-        <AiFillCaretLeft />
+    <PaginationWrapper>
+      <PaginationLink to={`?page=${page - 1 <= 1 ? 1 : page - 1}`}>
+        <IconWrapper>
+          <AiFillCaretLeft />
+        </IconWrapper>
         Prev
-      </Link>
-      <ul className="flex flex-row cursor-pointer items-center gap-1">
-        {pageNumbers?.map((num) => (
-          <Link to={`?page=${num}`} key={num}>
-            <li
-              className={
-                page === num
-                  ? "bg-purple-600 text-white px-2 font-primarybody"
-                  : "bg-none text-black hover:bg-slate-700 font-primarybody transition duration-200 ease-in-out px-2 hover:text-white"
-              }
-            >
-              {num}
-            </li>
-          </Link>
-        ))}
-      </ul>
+      </PaginationLink>
 
-      <Link
-        className="flex flex-row  items-center  ml-4 "
+      <PaginationList>
+        {pageNumbers?.map((num) => (
+          <PaginationLink>
+            <Link to={`?page=${num}`} key={num}>
+              <li>{num}</li>
+            </Link>
+          </PaginationLink>
+        ))}
+      </PaginationList>
+
+      <PaginationLink
         to={`?page=${page + 1 >= totalPage ? totalPage : page + 1}`}
       >
         <p className="cursor-pointer hover:text-gray-500 transition duration-200 ease-in-out font-primarybody">
           Next
         </p>
         <AiFillCaretRight />
-      </Link>
-    </div>
+      </PaginationLink>
+    </PaginationWrapper>
   );
 };
 
