@@ -18,6 +18,23 @@ const AboutSection = styled.section`
   justify-content: center;
   align-items: center;
 `;
+
+const VideoContainer = styled.div`
+  width: 80%;
+  max-width: 720px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  @media only Screen and (max-width: 40em) {
+    width: 95%;
+  }
+`;
+
 const Waves = styled.img`
   width: 100%;
   height: auto;
@@ -153,6 +170,15 @@ const About = () => {
             </div> */}
           </AboutText>
         </Content>
+        <VideoContainer>
+          <video controls autoPlay muted>
+            <source
+              src="https://res.cloudinary.com/dscoioscc/video/upload/v1703952163/wvtbmeetyrikmihj6lry.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </VideoContainer>
       </Main>
     </AboutSection>
   );
